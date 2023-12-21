@@ -1,0 +1,33 @@
+body {
+    color: whitesmoke;
+    font-family: "Roboto", sans-serif;
+    background-color: rgb(1, 38, 53);
+}
+
+textarea {
+    display:inline-block;
+    resize: none;
+    background-color: rgb(19, 61, 78);
+    color: whitesmoke;
+    border-radius: 12px;
+    border-style: hidden;
+    padding: 5px;
+    width: calc(100% - 100px);
+}
+
+#input {
+    position: fixed;
+    box-sizing: border-box;
+    bottom: 0;
+    width: 100%;
+}
+
+.sendbutton {
+    color: whitesmoke;
+    background-color: rgb(19, 61, 78);
+    display:inline-block;
+    font-size:50px;
+    padding: 5px;
+    border-radius: 12px;
+    border-style: hidden;
+}
