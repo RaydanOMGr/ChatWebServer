@@ -15,13 +15,20 @@ function connect() {
             print(data.message)
         } else if(data.id === 1) {
             uuid = data.assignedUUID;
-            let response = { "sessionUUID": uuid, "username": "testUser", "id": 3 };
-            websock.send(JSON.stringify(response));
+            send({ "username": "testuser", "id": 2 })
+        } else if(data.id === 3) {
+            send({ "id": 3 })
         }
     });
     websock.addEventListener("open", () => {
         print("Connected to server!")
-    })
+    });
+    websock.addEventListener("error", (err) => {
+        print("Oops! An error occured! " + err.type);
+    });
+    websock.addEventListener("close", () => {
+        print("Connection to the server has been broken!")
+    });
 }
 
 function sendMessage(elementId) {
@@ -45,4 +52,11 @@ function print(...message) {
         mess.innerText += msg.toString() + (i <= message.length ? "" : " ");
     }
     document.getElementById("chat").appendChild(mess);
+}
+
+function send(jsonObject) {
+    jsonObject.sessionUUID = uuid;
+    websock.send(
+        JSON.stringify(jsonObject)
+    );
 }
